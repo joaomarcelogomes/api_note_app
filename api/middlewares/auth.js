@@ -6,7 +6,7 @@ const User = require('../models/user');
 const WithAuth = (req,res, next) => {
     const token = req.headers['x-access-token'];
     if(!token){
-        res.status(401).json({error: 'Unauthorized.'});
+        res.status(401).json({error: 'Unauthorized: no provided token'});
     } else { 
         jwt.verify(token, secret, (err,decoded) => {
             if(err)
